@@ -308,18 +308,24 @@ static int fit_plane(int argc, char const* argv[])
   {
       int lno = 0;
 	  int vno;
+	  int startlno = 1000000;
 	  while(ifs.good())
 	  {
 		  lno++;
 		  std::getline(ifs, line);
-		  if(lno == 4)
+		  if(line.find("element vertex") != std::string::npos)
 		  {
 			  std::string vnostr = line.substr(15);
 			  vno = stoi(vnostr);
 			  //std::cout << "Vertex # = " << vno << std::endl;
 		  }
+
+		  if(line == "end_header")
+		  {
+			  startlno = lno + 1;
+		  }
 		  
-		  if(lno >= 10 && lno < vno+10)
+		  if(lno >= startlno && lno < vno+startlno)
 		  {
               //std::cout << lno << ": " << line << std::endl;
 			  std::stringstream ss(line);
