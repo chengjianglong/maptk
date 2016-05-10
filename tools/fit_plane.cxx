@@ -31,7 +31,7 @@
 /**
  * \The source is implemented by Chengjiang Long (chengjiang.long@ktiware.com)
  * \file
- * \brief Sparse Bungle Adjustment utility
+ * \brief for fitting a plane given a set of landmarks.
  */
 
 #include <iostream>
